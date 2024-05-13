@@ -27,5 +27,10 @@ df3.drop(columns=['date_timestamp'],inplace=True)
 # sort values according to date
 df3 = df3.sort_values(by='date', ascending=True)
 
+# adjust float values upto 2 decimal points
+df4=df3.round(2)
+df4['Value'] = df4['Value'].astype(float)
+df5 = df4[df4['Value']>=0.0]
+
 # exporting pre_processed data
 df3.to_csv('filtered_data.csv', index=False)
